@@ -1,0 +1,87 @@
+﻿@model DiaryEntry
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4 diary-card">
+                <div class="card-body p-5">
+
+
+
+                    <!-- Title -->
+                    <h2 class="mb-4 text-center text-primary fw-bold">Edit Diary Entry</h2>
+
+                    <!-- Form -->
+                    <form asp-action="EditDiary" asp-controller="DiaryEntry" method="post">
+
+                        <!-- Title -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="Title" class="form-control" placeholder="Enter a title" />
+                            <label asp-for="Title"></label>
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="Content" class="form-control" style="height: 150px" placeholder="Write your thoughts..."></textarea>
+                            <label asp-for="Content"></label>
+                            <span asp-validation-for="Content" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Created Date -->
+                        <div class="form-floating mb-4">
+                            <input asp-for="Created" type="date" class="form-control" placeholder="yyyy-mm-dd" />
+                            <label asp-for="Created"></label>
+                            <span asp-validation-for="Created" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-gradient btn-lg shadow">
+                                Edit Entry
+                            </button>
+                            <a class=" mt-2 btn btn-secondary btn-danger " asp-action="Index">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .diary-card {
+            background: #fff;
+            border-radius: 1rem;
+        }
+
+        /* Gradient Button */
+        .btn-gradient {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: #fff;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .btn-gradient:hover {
+                background: linear-gradient(45deg, #00f2fe, #4facfe);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            }
+
+        /* Input Focus Glow */
+        .form-control:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 0 0.2rem rgba(79,172,254,0.25);
+        }
+    </style>
+}
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial">
+}
